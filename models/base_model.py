@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
 
-
+time_format = "%Y-%m-%dT%H:%M:%S.%f"
 Base = declarative_base()
 
 
@@ -28,6 +28,12 @@ class BaseModel:
                     if key == "updated_at" or key == "created_at":
                         val = datetime.strptime(val, time_format)
                     setattr(self, key, val)
+            if "id" not in kwargs:
+                self.id = str(uuid.uuid4())
+            if "created_at" not in kwargs:
+                self.created_at = datetime.now()
+            if "updated_at" not in kwargs:
+                self.updated_at = datetime.now()
 
     def __str__(self):
         """Returns a string representation of the instance"""
