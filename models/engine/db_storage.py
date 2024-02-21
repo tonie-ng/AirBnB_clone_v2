@@ -24,7 +24,7 @@ class DBStorage:
         pwd = os.getenv("HBNB_MYSQL_PWD")
         db = os.getenv("HBNB_MYSQL_DB")
         host = os.getenv("HBNB_MYSQL_HOST")
-        env = os.getenv("HBNB_ENV"))
+        env = os.getenv("HBNB_ENV")
 
         self.__engine = create_engine(
                 'mysql+mysqldb://{}:{}@{}/{}'
@@ -73,5 +73,5 @@ class DBStorage:
         
         Base.metadata.create_all(self.__engine)
         sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sec)
+        Session = scoped_session(sess)
         self.__session = Session()
