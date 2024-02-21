@@ -19,7 +19,8 @@ class FileStorage:
                 if split_key[0] == cls.__name__:
                     cls_obj[key] = self.__objects[key]
             return cls_obj
-        return self.__objects
+        else:
+            return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
