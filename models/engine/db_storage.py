@@ -39,10 +39,10 @@ class DBStorage:
 
         result = {}
         if cls:
-           temp = self.__session.query(cls)
-           for obj in temp:
-               obj_key = "{}.{}".format(type(obj).__name__, obj.id)
-               result[obj_key] = obj
+            temp = self.__session.query(cls)
+            for obj in temp:
+                obj_key = "{}.{}".format(type(obj).__name__, obj.id)
+                result[obj_key] = obj
         else:
             all_cls = [State, City, User, Place, Review, Amenity]
             for item in all_cls:
@@ -70,8 +70,11 @@ class DBStorage:
 
     def reload(self):
         """"""
-        
         Base.metadata.create_all(self.__engine)
         sess = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess)
         self.__session = Session()
+
+    def close(self):
+        """ Closes the session """
+        self.__session.close()

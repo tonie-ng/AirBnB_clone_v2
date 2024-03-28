@@ -72,3 +72,7 @@ class FileStorage:
         if obj:
             obj_key = "{}.{}".format(obj.__class__.__name__, obj.id)
             del self.__objects[obj_key]
+
+    def close(self):
+        """ reloads """
+        self.reload()
