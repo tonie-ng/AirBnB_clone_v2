@@ -32,5 +32,5 @@ class State(BaseModel, Base):
                 semi.append(all_models[key])
         for item in semi:
             if item.state_id == self.id:
-                final.append(items)
+                final.append(item)
         return final
