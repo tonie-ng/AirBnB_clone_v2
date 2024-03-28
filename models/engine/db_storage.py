@@ -2,7 +2,7 @@
 """Database engine setup module"""
 
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.base_model import Base
 from models.state import State
