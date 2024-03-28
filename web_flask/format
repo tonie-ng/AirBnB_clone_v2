@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+pycodestyle *.py
+chmod +x *.py
